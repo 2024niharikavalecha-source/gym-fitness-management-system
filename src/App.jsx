@@ -1,3 +1,8 @@
+
+import { useState } from "react"
+import Login from "./components/Login"
+
+
 import MemberDashboard from "./components/MemberDashboard"
 import Navbar from "./components/Navbar"
 import Home from "./components/Home"
@@ -8,9 +13,18 @@ import Profile from "./components/Profile"
 import WorkoutTracker from "./components/WorkoutTracker"
 
 function App() {
+  const [showLogin, setShowLogin] = useState(false)
+  if (showLogin) {
+  return (
+    <Login
+      onLogin={() => setShowLogin(false)}
+      onBack={() => setShowLogin(false)}
+    />
+  )
+}
   return (
     <>
-      <Navbar />
+     <Navbar onLoginClick={() => setShowLogin(true)} />
       <Home />
       <Profile />
       <WorkoutTracker />

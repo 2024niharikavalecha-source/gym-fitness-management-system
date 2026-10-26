@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function Navbar() {
+function Navbar({ onLoginClick }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
@@ -19,9 +19,12 @@ function Navbar() {
           <a href="#trainers" className="hover:text-red-500">Trainers</a>
         </div>
 
-        <button className="hidden md:block bg-red-600 px-5 py-2 rounded-lg hover:bg-red-700">
-          Join Now
-        </button>
+        <button
+  onClick={onLoginClick}
+  className="hidden md:block bg-red-600 px-5 py-2 rounded-lg hover:bg-red-700"
+>
+  Join Now
+</button>
 
         {/* Mobile Menu Button */}
         <button
@@ -53,9 +56,15 @@ function Navbar() {
             Trainers
           </a>
 
-          <button className="bg-red-600 py-2 rounded-lg">
-            Join Now
-          </button>
+          <button
+  onClick={() => {
+    setMenuOpen(false)
+    onLoginClick()
+  }}
+  className="bg-red-600 py-2 rounded-lg"
+>
+  Join Now
+</button>
 
         </div>
       )}
