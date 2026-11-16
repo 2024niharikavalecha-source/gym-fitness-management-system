@@ -8,7 +8,9 @@ function Chat() {
   const socketRef = useRef(null)
 
   useEffect(() => {
-    socketRef.current = io("http://localhost:5000")
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000"
+
+    socketRef.current = io(API_URL)
 
     socketRef.current.on("chat message", (newMessage) => {
       setMessages((prev) => [...prev, newMessage])
@@ -29,7 +31,6 @@ function Chat() {
   return (
     <section className="bg-[#151D15] text-white py-20 px-6">
       <div className="max-w-3xl mx-auto">
-
         <div className="text-center mb-10">
           <p className="text-[#9EFF00] font-bold tracking-[4px]">
             CONNECT & MOTIVATE
@@ -43,7 +44,6 @@ function Chat() {
         </div>
 
         <div className="bg-[#1C261C] border border-[#9EFF00]/30 rounded-2xl p-6">
-
           <div className="h-64 overflow-y-auto space-y-3 mb-5">
             {messages.length === 0 && (
               <p className="text-gray-500 text-center mt-24">
@@ -77,7 +77,6 @@ function Chat() {
               Send
             </button>
           </form>
-
         </div>
       </div>
     </section>
