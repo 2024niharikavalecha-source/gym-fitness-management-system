@@ -15,28 +15,46 @@ function MemberDashboard() {
   }, [])
 
   return (
-    <section className="py-16 px-6 bg-white">
-      <div className="max-w-4xl mx-auto">
+    <section className="py-20 px-6 bg-[#101510] text-white">
 
-        <div className="text-center mb-10">
-          <p className="text-red-600 font-bold">MEMBERS</p>
-          <h2 className="text-4xl font-bold">Gym Members</h2>
+      <div className="max-w-5xl mx-auto">
+
+        <div className="text-center mb-14">
+          <p className="text-[#9EFF00] font-bold tracking-[4px]">
+            OUR MEMBERS
+          </p>
+
+          <h2 className="text-4xl md:text-5xl font-extrabold mt-3">
+            Gym <span className="text-[#9EFF00]">Community.</span>
+          </h2>
+
+          <p className="text-gray-400 mt-4">
+            Meet the members on their fitness journey.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+
           {members.map((member) => (
             <div
               key={member.id}
-              className="bg-gray-100 p-6 rounded-xl shadow text-center"
+              className="bg-[#1C261C] p-8 rounded-2xl border border-green-900 text-center hover:border-[#9EFF00] hover:-translate-y-2 transition duration-300"
             >
-              <h3 className="text-xl font-bold">{member.name}</h3>
-              <p className="text-red-600 mt-2">
+              <div className="w-20 h-20 rounded-full bg-[#34452C] flex items-center justify-center mx-auto mb-5 text-4xl">
+                👤
+              </div>
+
+              <h3 className="text-2xl font-bold">
+                {member.name}
+              </h3>
+
+              <p className="text-[#9EFF00] mt-3 font-semibold">
                 {member.plan} Member
               </p>
             </div>
           ))}
-        </div>
 
+        </div>
       </div>
     </section>
   )

@@ -1,58 +1,50 @@
+
 import useWorkoutTracker from "../hooks/useWorkoutTracker"
 
 function WorkoutTracker() {
-
   const { count, completeWorkout, resetWorkouts } = useWorkoutTracker()
 
   return (
-    <section className="py-16 px-6 bg-gray-100">
+    <section className="bg-[#101510] text-white py-20 px-6">
+      <div className="max-w-4xl mx-auto text-center">
 
-      <div className="max-w-xl mx-auto text-center">
-
-        <p className="text-red-600 font-bold">
-          FITNESS TRACKER
+        <p className="text-[#9EFF00] font-bold tracking-[4px]">
+          STAY CONSISTENT
         </p>
 
-        <h2 className="text-4xl font-bold mt-2">
-          Workout Progress
+        <h2 className="text-4xl font-extrabold mt-3 mb-10">
+          Workout Tracker
         </h2>
 
-        <div className="bg-white shadow-lg rounded-xl p-8 mt-8">
+        <div className="bg-[#1C261C] border border-[#9EFF00]/30 rounded-3xl p-10">
 
-          <div className="text-5xl mb-4">
-            🏋️
-          </div>
-
-          <p className="text-gray-600">
+          <p className="text-gray-300 text-lg">
             Workouts Completed
           </p>
 
-          <h3 className="text-5xl font-bold text-red-600 my-5">
+          <h3 className="text-7xl font-extrabold text-[#9EFF00] my-6">
             {count}
           </h3>
 
-          <div className="flex justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-4">
 
             <button
               onClick={completeWorkout}
-              className="bg-red-600 text-white px-5 py-3 rounded-lg hover:bg-red-700"
+              className="bg-[#9EFF00] text-black font-bold px-7 py-3 rounded-xl hover:bg-white transition"
             >
-              Complete Workout
+              + Complete Workout
             </button>
 
             <button
               onClick={resetWorkouts}
-              className="bg-gray-800 text-white px-5 py-3 rounded-lg hover:bg-black"
+              className="bg-[#244A28] text-white font-bold px-7 py-3 rounded-xl hover:bg-[#34452C] transition"
             >
               Reset
             </button>
 
           </div>
-
         </div>
-
       </div>
-
     </section>
   )
 }
