@@ -18,21 +18,23 @@ const memberRoutes = require("./routes/memberRoutes");
 const app = express();
 const server = http.createServer(app);
 
-// Frontend URL
-const CLIENT_URL =
-  process.env.CLIENT_URL || "http://localhost:5173";
+// Allow local and deployed frontend
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://gymfit-chi-eight.vercel.app"
+];
 
 // Socket.IO Setup
 const io = new Server(server, {
   cors: {
-    origin: CLIENT_URL,
+    origin: allowedOrigins,
     methods: ["GET", "POST"]
   }
 });
 
 // Middleware
 app.use(cors({
-  origin: CLIENT_URL
+  origin: allowedOrigins
 }));
 
 app.use(express.json());
