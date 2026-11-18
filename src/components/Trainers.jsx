@@ -7,15 +7,15 @@ function Trainers() {
   ]
 
   return (
-    <section id="trainers" className="py-20 px-6 bg-[#151D15] text-white">
+    <section id="trainers" className="py-20 px-6 bg-[#080808] text-white">
 
       <div className="text-center mb-14">
-        <p className="text-[#9EFF00] font-bold tracking-[4px]">
+        <p className="text-[#FF5A00] font-bold tracking-[4px]">
           OUR TEAM
         </p>
 
         <h2 className="text-4xl md:text-5xl font-extrabold mt-3">
-          Meet Our <span className="text-[#9EFF00]">Trainers.</span>
+          Meet Our <span className="text-[#FF5A00]">Trainers.</span>
         </h2>
 
         <p className="text-gray-400 mt-4">
@@ -28,9 +28,9 @@ function Trainers() {
         {trainers.map((trainer, index) => (
           <div
             key={index}
-            className="bg-[#202B20] p-9 rounded-2xl border border-green-900 text-center hover:border-[#9EFF00] hover:-translate-y-2 transition duration-300"
+            className="bg-[#151515] p-9 rounded-2xl border border-[#333333] text-center hover:border-[#FF5A00] hover:shadow-[0_0_22px_rgba(255,90,0,0.2)] hover:-translate-y-2 transition duration-300"
           >
-            <div className="w-24 h-24 mx-auto rounded-full bg-[#34452C] flex items-center justify-center text-5xl mb-6">
+            <div className="w-24 h-24 mx-auto rounded-full bg-[#292929] border border-[#FF5A00]/40 flex items-center justify-center text-5xl mb-6">
               {trainer.icon}
             </div>
 
@@ -38,7 +38,7 @@ function Trainers() {
               {trainer.name}
             </h3>
 
-            <p className="text-[#9EFF00] mt-3 font-semibold">
+            <p className="text-[#FF5A00] mt-3 font-semibold">
               {trainer.role}
             </p>
           </div>

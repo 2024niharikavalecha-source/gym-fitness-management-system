@@ -29,22 +29,35 @@ function Chat() {
   }
 
   return (
-    <section className="bg-[#151D15] text-white py-20 px-6">
+    <section className="bg-[#080808] text-white py-20 px-6">
       <div className="max-w-3xl mx-auto">
+
         <div className="text-center mb-10">
-          <p className="text-[#9EFF00] font-bold tracking-[4px]">
+          <p className="text-[#FF5A00] font-bold tracking-[4px]">
             CONNECT & MOTIVATE
           </p>
+
           <h2 className="text-4xl font-extrabold mt-3">
-            GYMFIT Live Chat
+            GYMFIT <span className="text-[#FF5A00]">Live Chat.</span>
           </h2>
+
           <p className="text-gray-400 mt-3">
             Connect with your fitness community.
           </p>
         </div>
 
-        <div className="bg-[#1C261C] border border-[#9EFF00]/30 rounded-2xl p-6">
-          <div className="h-64 overflow-y-auto space-y-3 mb-5">
+        <div className="bg-[#151515] border border-[#FF5A00]/40 rounded-2xl p-6 shadow-[0_0_25px_rgba(255,90,0,0.08)]">
+
+          <div className="flex items-center justify-between mb-5 border-b border-[#333333] pb-4">
+            <h3 className="font-bold text-lg">Community Chat</h3>
+
+            <span className="text-[#FF5A00] text-sm font-semibold">
+              ● Live Chat
+            </span>
+          </div>
+
+          <div className="h-64 overflow-y-auto space-y-3 mb-5 pr-2">
+
             {messages.length === 0 && (
               <p className="text-gray-500 text-center mt-24">
                 No messages yet. Start the conversation!
@@ -54,28 +67,31 @@ function Chat() {
             {messages.map((msg, index) => (
               <div
                 key={index}
-                className="bg-[#244A28] p-3 rounded-xl text-white break-words"
+                className="bg-[#292929] border-l-4 border-[#FF5A00] p-3 rounded-xl text-white break-words"
               >
                 {msg}
               </div>
             ))}
+
           </div>
 
           <form onSubmit={sendMessage} className="flex gap-3">
+
             <input
               type="text"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Type your message..."
-              className="flex-1 min-w-0 bg-[#101510] border border-[#34452C] rounded-xl px-4 py-3 text-white outline-none focus:border-[#9EFF00]"
+              className="flex-1 min-w-0 bg-[#080808] border border-[#444444] rounded-xl px-4 py-3 text-white outline-none focus:border-[#FF5A00]"
             />
 
             <button
               type="submit"
-              className="bg-[#9EFF00] text-black font-bold px-6 py-3 rounded-xl hover:bg-white transition"
+              className="bg-[#FF5A00] text-white font-bold px-6 py-3 rounded-xl hover:bg-[#FF7A1A] transition"
             >
               Send
             </button>
+
           </form>
         </div>
       </div>

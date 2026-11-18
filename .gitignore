@@ -32,3 +32,6 @@ backend/node_modules/
 
 # Backend build files
 backend/dist/
+.env
+.env.*
+!.env.example

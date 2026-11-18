@@ -1,69 +1,72 @@
 
-import { useState } from "react"
-
-function Navbar({ onLoginClick }) {
-  const [menuOpen, setMenuOpen] = useState(false)
-
-  const links = [
-    ["Home", "#home"],
-    ["Workouts", "#workouts"],
-    ["Membership", "#plans"],
-    ["Trainers", "#trainers"],
+function Navbar({ onLoginClick, onNavigate, activePage }) {
+  const navItems = [
+    "Home",
+    "Workouts",
+    "Membership",
+    "Trainers",
+    "MemberDashboard",
+    "DietPlanner",
+    "Achievements",
+    "Chat",
+    "AdminDashboard"
   ]
 
+  const getLabel = (item) => {
+    const labels = {
+      MemberDashboard: "Dashboard",
+      DietPlanner: "Diet Planner",
+      AdminDashboard: "Admin"
+    }
+
+    return labels[item] || item
+  }
+
   return (
-    <nav className="bg-[#101510] text-white px-6 md:px-12 py-5 border-b border-[#9EFF00]/20">
-      <div className="flex items-center justify-between">
+    <nav className="sticky top-0 z-50 bg-[#080808]/95 backdrop-blur-xl border-b border-[#FF5A00]/40 px-5 py-4 shadow-[0_4px_20px_#FF5A0015]">
 
-        <h1 className="text-2xl font-extrabold">
-          GYM<span className="text-[#9EFF00]">FIT</span>
-        </h1>
+      <div className="max-w-7xl mx-auto">
 
-        <div className="hidden md:flex gap-8">
-          {links.map(([name, link]) => (
-            <a key={name} href={link}
-              className="hover:text-[#9EFF00] transition">
-              {name}
-            </a>
-          ))}
-        </div>
+        <div className="flex flex-wrap justify-between items-center gap-4">
 
-        <button
-          onClick={onLoginClick}
-          className="hidden md:block bg-[#9EFF00] text-black px-6 py-2 rounded-lg font-bold hover:bg-[#b5ff4d] transition"
-        >
-          Join Now
-        </button>
-
-        <button
-          className="md:hidden text-3xl text-[#9EFF00]"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          ☰
-        </button>
-      </div>
-
-      {menuOpen && (
-        <div className="md:hidden flex flex-col gap-5 mt-6 pb-3">
-          {links.map(([name, link]) => (
-            <a key={name} href={link}
-              onClick={() => setMenuOpen(false)}
-              className="hover:text-[#9EFF00]">
-              {name}
-            </a>
-          ))}
-
-          <button
-            onClick={() => {
-              setMenuOpen(false)
-              onLoginClick()
-            }}
-            className="bg-[#9EFF00] text-black py-3 rounded-lg font-bold"
+          {/* LOGO */}
+          <h1
+            onClick={() => onNavigate("Home")}
+            className="text-3xl md:text-4xl font-black tracking-widest text-white cursor-pointer"
           >
-            Join Now
+            GYM<span className="text-[#FF5A00] drop-shadow-[0_0_10px_#FF5A00]">FIT</span>
+          </h1>
+
+          {/* JOIN BUTTON */}
+          <button
+            onClick={onLoginClick}
+            className="bg-[#FF5A00] text-white px-6 py-3 rounded-lg font-extrabold tracking-wider hover:bg-[#FF7A24] hover:scale-105 transition-all duration-300 shadow-[0_0_15px_#FF5A0060] hover:shadow-[0_0_25px_#FF5A00]"
+          >
+            JOIN NOW →
           </button>
+
         </div>
-      )}
+
+        {/* NAVIGATION LINKS */}
+        <div className="flex flex-wrap gap-2 mt-5">
+
+          {navItems.map((item) => (
+            <button
+              key={item}
+              onClick={() => onNavigate(item)}
+              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all duration-300 ${
+                activePage === item
+                  ? "bg-[#FF5A00] text-white shadow-[0_0_15px_#FF5A0080]"
+                  : "bg-[#151515] text-gray-300 border border-[#292929] hover:border-[#FF5A00] hover:text-[#FF5A00] hover:shadow-[0_0_10px_#FF5A0030]"
+              }`}
+            >
+              {getLabel(item)}
+            </button>
+          ))}
+
+        </div>
+
+      </div>
     </nav>
   )
 }
